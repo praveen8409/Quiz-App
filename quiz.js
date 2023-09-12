@@ -125,7 +125,7 @@ function showQuestion() {
       else {
         score = score - 0.25;
       }
-      console.log(score);
+     
       scoreEl.textContent =  `Score: ${score}/${totalScore}`;
         nextQuestion();
         
