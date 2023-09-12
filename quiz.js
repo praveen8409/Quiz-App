@@ -71,13 +71,35 @@ const questionEl = document.getElementById("question");
 const optionEl = document.getElementById("options");
 const scoreEl = document.getElementById("score");
 const nextEl = document.getElementById("next");
+const prevEl = document.getElementById("prev");
+
 
 
 showQuestion();
+
+//Implement the next button
 nextEl.addEventListener('click', ()=>{
   scoreEl.textContent = `Score: ${score}/${totalScore}`;
   nextQuestion();
-})
+});
+
+// Implement the privious button
+prevEl.addEventListener('click', () => {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    optionEl.textContent = '';
+    showQuestion();
+  }
+});
+
+// Initialize the "Previous" button's display property
+if (currentQuestion === 0) {
+  prevEl.style.display = 'none';
+}
+
+if (currentQuestion > 0) {
+  prevEl.style.display = 'block';
+}
 
 
 function showQuestion() {
@@ -106,6 +128,7 @@ function showQuestion() {
       console.log(score);
       scoreEl.textContent =  `Score: ${score}/${totalScore}`;
         nextQuestion();
+        
     });
   });
 }
@@ -116,10 +139,18 @@ function nextQuestion() {
   if (currentQuestion >= quesJSON.length) {
     questionEl.textContent = 'Quiz Completed!!';
     nextEl.remove();
+    prevEl.remove();
+
   }else{
     showQuestion();
   }
+
+  if (currentQuestion > 0) {
+    prevEl.style.display = 'block'; // Or 'inline' depending on your layout
   }
+  }
+
+  
   
 
 

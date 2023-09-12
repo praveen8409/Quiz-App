@@ -51,7 +51,7 @@ body {
     display: flex;
     width: 50%;
     margin: auto;
-    justify-content: flex-end;
+    justify-content: space-evenly;
   }
   
   #next {
@@ -66,6 +66,21 @@ body {
   }
   
   #next:hover {
+    background-color: #0060c0;
+  }
+
+  #prev {
+    display: inline-block;
+    background-color: #0084ff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #prev:hover {
     background-color: #0060c0;
   }
   
