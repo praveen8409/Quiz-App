@@ -22,8 +22,10 @@ let score = 0;
 //setting question text content
 questionEl.textContent = question;
 
+const shuffledOptions = shuffleOptions(options);
+
 // Populating the Option div with the buttons
-options.forEach((opt) => {
+shuffledOptions.forEach((opt) => {
   // Creating Button and appending it to the opt div
   const btn = document.createElement('button');
   btn.textContent = opt;
@@ -37,10 +39,22 @@ options.forEach((opt) => {
     else {
       score = score - 0.25;
     }
-    console.log(score);
-    scoreEl.textContent = `Score: ${score}`;
+    
     scoreEl.textContent = `Score: ${score}`;
     questionEl.textContent = 'Quiz Completed!!';
     optionsEl.textContent = '';
   });
-})
+});
+
+
+  // shuffling 
+  function shuffleOptions(options){
+    for(let i = options.length-1; i>=0; i--){
+      const j = Math.floor(Math.random()*i+1);
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+
+    return options;
+  }
+
+  
